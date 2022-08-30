@@ -20,6 +20,22 @@ class Form {
     this.greeting.class('greeting')
   }
 
+  handleMousePressed(){
+    this.playButton.mousePressed( () => {
+      this.input.hide()
+      this.playButton.hide()
+      var mensage = `olá, ${this.input.value()}<br>
+      aguarde por mais jogadores`
+      this.greeting.html(mensage)
+      playerCount += 1;
+      player.name = this.input.value();
+      player.index = playerCount;
+      player.addPlayer();
+      player.updateCount(playerCount);
+      player.getDistance();
+    })
+  }
+
   hide() {
     this.greeting.hide();
     this.playButton.hide();
@@ -29,6 +45,7 @@ class Form {
   display(){
     this.setElementsPosition()
     this.setElementsStyle()
+    this.handleMousePressed()
   }
 
 }
